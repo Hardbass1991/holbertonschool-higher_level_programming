@@ -13,17 +13,17 @@ class Square:
             size (int): Size of square
         """
         self.size = size
+
     @property
     def size(self):
+        """Returns public version of attribute"""
         return self.__size
+
     @size.setter
     def size(self, val):
+        """Sets input attribute after validating"""
         if type(val) != int:
             raise TypeError("size must be an integer")
-        elif val < 0:
+        if val < 0:
             raise ValueError("size must be >= 0")
-        else:
-            self.__size = val
-    @size.deleter
-    def size(self):
-        del self.size
+        self.__size = val
