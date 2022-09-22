@@ -12,8 +12,8 @@ class Square:
         Args:
             size (int): Size of square
         """
-        self.__size = s
-        self.__position = p
+        self.size = s
+        self.position = p
 
     @property
     def size(self):
@@ -34,6 +34,7 @@ class Square:
 
     @position.setter
     def position(self, val):
+        print(val)
         if type(val) != tuple or len(val) != 2:
             raise TypeError("position must be a tuple of 2 positive integers")
         if type(val[0]) != int or type(val[1]) != int:
