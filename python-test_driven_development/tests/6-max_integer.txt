@@ -1,0 +1,5 @@
+>>> max_integer = __import__('6-max_integer').max_integer
+>>> import sys
+>>> max_integer([sys.float_info.max*10, 43, 234])
+>>> max_integer("sssss")
+'s'
