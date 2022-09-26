@@ -1,6 +1,0 @@
-#!/bin/bash
-module='0-square'
-python3 -c "print(__import__(${module}).__doc__)"
-python3 -c "print(__import__(${module}).MyClass.__doc__)"
-
-
