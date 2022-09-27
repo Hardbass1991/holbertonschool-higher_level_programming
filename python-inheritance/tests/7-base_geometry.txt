@@ -4,19 +4,62 @@
 Traceback (most recent call last):
 ...
 TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
 >>> a.integer_validator("a")
 Traceback (most recent call last):
 ...
 TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+>>> a.integer_validator("a", 8)
+
+>>> a.integer_validator("a", 0)
+Traceback (most recent call last):
+...
+ValueError: a must be greater than 0
+
+>>> a.integer_validator("a", "69")
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
+>>> a.integer_validator("a", (69, 56, 67))
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
+>>> a.integer_validator("a", True)
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
+>>> a.integer_validator("a", {4, 4, 2, 1, 2})
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
+>>> a.integer_validator("a", None)
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
 >>> a.integer_validator("a", [89, 88])
 Traceback (most recent call last):
 ...
 TypeError: a must be an integer
+
 >>> a.integer_validator("a", 89.6)
 Traceback (most recent call last):
 ...
 TypeError: a must be an integer
+
 >>> a.integer_validator("a", -6)
 Traceback (most recent call last):
 ...
 ValueError: a must be greater than 0
+
+>>> a.area()
+Traceback (most recent call last):
+...
+Exception: area() is not implemented
+
+
