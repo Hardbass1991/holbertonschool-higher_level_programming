@@ -11,7 +11,7 @@ class Student:
 
     def to_json(self, attrs=None):
         attrs_valid = True
-        if attrs == None or type(attrs) != list:
+        if attrs is None or type(attrs) != list:
             attrs_valid = False
         else:
             for attr in attrs:
