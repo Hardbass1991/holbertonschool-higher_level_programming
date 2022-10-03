@@ -83,16 +83,23 @@ class Rectangle(Base):
                     print("#", end='')
                 print()
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """method that updates instance attributes"""
-        for i in range(len(args)):
-            if i == 0:
-                self.id = args[i]
-            elif i == 1:
-                self.width = args[i]
-            elif i == 2:
-                self.height = args[i]
-            elif i == 3:
-                self.x = args[i]
-            elif i == 4:
-                self.y = args[i]
+        if not args:
+            for k, v in kwargs.items():
+                key = k
+                if k != 'id':
+                    key = "_Rectangle__" + k
+                self.__dict__[key] = v
+        else:
+            for i in range(len(args)):
+                if i == 0:
+                    self.id = args[i]
+                elif i == 1:
+                    self.width = args[i]
+                elif i == 2:
+                    self.height = args[i]
+                elif i == 3:
+                    self.x = args[i]
+                elif i == 4:
+                    self.y = args[i]
