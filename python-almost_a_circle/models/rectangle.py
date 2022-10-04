@@ -86,11 +86,12 @@ class Rectangle(Base):
     def update(self, *args, **kwargs):
         """method that updates instance attributes"""
         if not args:
+            # print(self.__dict__)
             for k, v in kwargs.items():
-                key = k
-                if k != 'id':
-                    key = "_Rectangle__" + k
-                self.__dict__[key] = v
+                if "_Rectangle__" + k in self.__dict__.keys():
+                    self.__dict__["_Rectangle__" + k] = v
+                else:
+                    self.__dict__[k] = v
         else:
             for i in range(len(args)):
                 if i == 0:
@@ -103,3 +104,15 @@ class Rectangle(Base):
                     self.x = args[i]
                 elif i == 4:
                     self.y = args[i]
+
+    def to_dictionary(self):
+        """method that prints a dictionary representation of object"""
+        list_from_dict = list(self.__dict__.items())
+        lst = []
+        for i in list_from_dict:
+            if i[0].startswith("_Rectangle__"):
+                lst.append(i[0][12:])
+            else:
+                lst.append(i[0])
+            lst.append(i[1])
+        return {lst[i]: lst[i + 1] for i in range(0, len(lst), 2)}
