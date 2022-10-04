@@ -30,4 +30,5 @@ class Base:
         with open(cls.__name__ + ".json", "w", encoding="utf-8") as f:
             if list_objs is None:
                 f.write("[]")
-            f.write(cls.to_json_string(lst))
+            else:
+                f.write(cls.to_json_string(lst))
