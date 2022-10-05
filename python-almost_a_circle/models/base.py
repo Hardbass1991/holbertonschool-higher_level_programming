@@ -51,3 +51,15 @@ class Base:
             new = cls(1, 1)
         new.update(**dictionary)
         return new
+
+    @classmethod
+    def load_from_file(cls):
+        """loads list of dicts from file and returns list of objects"""
+        lst = []
+        file_exists = False
+        with open(cls.__name__ + ".json", "r", encoding="utf-8") as f:
+            file_exists = True
+            dcts = json.loads(f.read())
+            for dct in dcts:
+                lst.append(cls.create(**dct))
+        return lst
