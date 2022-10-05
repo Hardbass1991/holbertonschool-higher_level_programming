@@ -32,3 +32,9 @@ class Base:
                 f.write("[]")
             else:
                 f.write(cls.to_json_string(lst))
+
+    @staticmethod
+    def from_json_string(json_string):
+        if not json_string or json_string is None:
+            json_string = "[]"
+        return json.loads(json_string)
