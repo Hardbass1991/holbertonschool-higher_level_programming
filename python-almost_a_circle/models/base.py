@@ -44,6 +44,10 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         """creates new instance with attributes from dictionary"""
-        new = cls(1, 1)
+        try:
+            a = cls.size
+            new = cls(1)
+        except AttributeError:
+            new = cls(1, 1)
         new.update(**dictionary)
         return new
