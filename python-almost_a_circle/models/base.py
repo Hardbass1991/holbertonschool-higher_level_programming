@@ -56,10 +56,11 @@ class Base:
     def load_from_file(cls):
         """loads list of dicts from file and returns list of objects"""
         lst = []
-        file_exists = False
-        with open(cls.__name__ + ".json", "r", encoding="utf-8") as f:
-            file_exists = True
-            dcts = cls.from_json_string(f.read())
+        try:
+            with open(cls.__name__ + ".json", "r", encoding="utf-8") as f:
+                dcts = cls.from_json_string(f.read())
             for dct in dcts:
                 lst.append(cls.create(**dct))
-        return lst
+            return lst
+        except FileNotFoundError:
+            return []
