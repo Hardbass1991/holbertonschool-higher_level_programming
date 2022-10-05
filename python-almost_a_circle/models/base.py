@@ -23,6 +23,7 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs):
+        """saves string representation to file"""
         lst = []
         for i in list_objs:
             d = i.to_dictionary()
@@ -35,6 +36,14 @@ class Base:
 
     @staticmethod
     def from_json_string(json_string):
+        """returns input string as list"""
         if not json_string or json_string is None:
             json_string = "[]"
         return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """creates new instance with attributes from dictionary"""
+        new = cls(1, 1)
+        new.update(**dictionary)
+        return new
