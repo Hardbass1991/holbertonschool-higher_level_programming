@@ -24,14 +24,14 @@ class Base:
     @classmethod
     def save_to_file(cls, list_objs):
         """saves string representation to file"""
-        lst = []
-        for i in list_objs:
-            d = i.to_dictionary()
-            lst.append(d)
         with open(cls.__name__ + ".json", "w", encoding="utf-8") as f:
-            if list_objs is None:
+            if list_objs is None or not list_objs:
                 f.write("[]")
             else:
+                lst = []
+                for i in list_objs:
+                    d = i.to_dictionary()
+                    lst.append(d)
                 f.write(cls.to_json_string(lst))
 
     @staticmethod
