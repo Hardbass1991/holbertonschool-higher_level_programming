@@ -10,7 +10,7 @@ if __name__ == '__main__':
     engine = create_engine(acc.format(a[1], a[2], a[3]), pool_pre_ping=True)
 
     from sqlalchemy.orm import sessionmaker
-    Session = sessionmaker(bind = engine)
+    Session = sessionmaker(bind=engine)
     session = Session()
 
     results = session.query(State).order_by(State.id)
@@ -18,4 +18,3 @@ if __name__ == '__main__':
     for result in results:
         i += 1
         print(f"{i}: {result.name}")
-
