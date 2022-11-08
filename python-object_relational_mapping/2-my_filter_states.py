@@ -6,7 +6,8 @@ if __name__ == '__main__':
     a = list(sys.argv)
     db = MySQLdb.connect(host="localhost", user=a[1], passwd=a[2], db=a[3])
     cur = db.cursor()
-    q = "SELECT * FROM states WHERE name LIKE '{}' ORDER BY states.id".format(a[4])
+    q = "SELECT * FROM states WHERE name LIKE BINARY '{}' ORDER BY states.id"
+    q = q.format(a[4])
     number_of_rows = cur.execute(q)
     rows = cur.fetchall()
     for row in rows:
