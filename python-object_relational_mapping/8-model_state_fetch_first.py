@@ -14,6 +14,7 @@ if __name__ == '__main__':
     session = Session()
 
     result = session.query(State).first()
-    print(f"1: {result.name}")
-    if result is None:
+    if not result:
         print("Nothing")
+    else:
+        print(f"1: {result.name}")
