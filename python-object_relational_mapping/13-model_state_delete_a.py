@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""script that lists all State objects from the database hbtn_0e_6_usa"""
+"""script that deletes objects that contain the letter 'a'"""
 if __name__ == '__main__':
     from sqlalchemy import (create_engine)
     from model_state import Base, State
@@ -13,6 +13,6 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    results = session.query(State).order_by(State.id)
-    for result in results:
-        print(f"{result.id}: {result.name}")
+    new = session.query(State).filter(State.name.like("%a%")).\
+        delete(synchronize_session=False)
+    session.commit()
