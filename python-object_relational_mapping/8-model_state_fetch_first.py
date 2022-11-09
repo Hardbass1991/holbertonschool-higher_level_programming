@@ -15,3 +15,5 @@ if __name__ == '__main__':
 
     result = session.query(State).first()
     print(f"1: {result.name}")
+    if result is None:
+        print("Nothing")
