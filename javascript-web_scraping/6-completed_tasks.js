@@ -10,7 +10,7 @@ request(url, function (error, response) {
       const key = body[i].userId.toString();
       if (body[i].completed === true) {
         if (!Object.keys(dict).includes(key)) {
-          dict[key] = 0;
+          dict[key] = 1;
         } else {
           dict[key] += 1;
         }
